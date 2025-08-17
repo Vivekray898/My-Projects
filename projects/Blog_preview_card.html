@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Preview Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: "Figtree", sans-serif;
+        background: rgb(244, 208, 78);
+        margin: auto;
+      }
+      .card {
+        width: 335px;
+        height: 450px;
+        margin: auto;
+        margin-top: 100px;
+        border-radius: 10px;
+        background: white;
+        border: 0.8px solid black;
+        padding: 24px;
+        box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.9);
+        transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+      }
+      .card:hover {
+        transform: scale(1.05); /* grow a bit */
+        box-shadow: 16px 16px 0px rgba(0, 0, 0, 1);
+      }
+      .card_img {
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+        margin: 0 0 24 0;
+        margin-top: 0px;
+        margin-bottom: 16px;
+      }
+
+      .learn {
+        background: rgb(244, 208, 78);
+        border-radius: 8px;
+        padding: 8px 12px;
+        margin-bottom: 16px;
+        display: inline-block;
+      }
+
+      .card_date {
+        margin-top: 0px;
+        margin-bottom: 16px;
+      }
+      .card_title {
+        font-weight: 800;
+        font-size: 22px;
+        color: black;
+        text-decoration: none;
+        transition: 0.3s ease-in-out;
+      }
+      .card_title:hover {
+        color: rgb(244, 208, 78);
+      }
+      .desc {
+        font-size: 16px;
+        color: black;
+        margin-top: 0;
+        margin-bottom: 24px;
+      }
+      .author_section {
+        display: flex;
+        align-items: center;
+        margin-top: 24px;
+        column-gap: 12px;
+      }
+
+      .author_img {
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        box-sizing: border-box;
+      }
+      .auth_name {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 800px;
+      }
+
+      @media (max-width: 768px) {
+        .card {
+        width: 330px;
+        height: 450px;
+        margin: auto;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 100px;
+        border-radius: 10px;
+        background: white;
+        border: 0.8px solid black;
+        padding: 24px;
+        box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.9);
+        transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+      }
+        }
+
+        @media (max-width: 667px) {
+        .card {
+        width: 330px;
+        height: 450px;
+        margin: auto;
+        margin-top: 100px;
+        border-radius: 10px;
+        background: white;
+        border: 0.8px solid black;
+        padding: 24px;
+        box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.9);
+        transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+      }
+        }
+    </style>
+  </head>
+  <body>
+    <article class="card">
+      <!-- main card image -->
+      <img
+        class="card_img"
+        src="/practice/assets/images/illustration-article.svg"
+        alt="main illustration image"
+      />
+      <!-- card content start -->
+      <div class="card_content">
+        <span class="learn"> Learning</span>
+        <p class="card_date">Published 21 Dec 2023</p>
+        <a href="" class="card_title">HTML & CSS foundations</a>
+        <p class="desc">
+          These languages are the backbone of every website, defining structure,
+          content, and presentation.
+        </p>
+      </div>
+
+      <!-- author section -->
+      <div class="author_section">
+        <img
+          src="/practice/assets/images/image-avatar.webp"
+          class="author_img"
+          alt=""
+        />
+        <span class="auth_name">Greg Hooper</span>
+      </div>
+    </article>
+  </body>
+</html>
