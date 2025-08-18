@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results Summary Component</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+       :root {
+            /* Primary Colors */
+            --clr-primary-light-red: hsl(0, 100%, 67%);
+            --clr-primary-orangey-yellow: hsl(39, 100%, 56%);
+            --clr-primary-green-teal: hsl(166, 100%, 37%);
+            --clr-primary-cobalt-blue: hsl(234, 85%, 45%);
+
+            /* Neutral Colors */
+            --clr-neutral-white: hsl(0, 0%, 100%);
+            --clr-neutral-pale-blue: hsl(221, 100%, 96%);
+            --clr-neutral-light-lavender: hsl(241, 100%, 89%);
+            --clr-neutral-dark-gray-blue: hsl(224, 30%, 27%);
+
+            /* Gradients */
+            --gradient-background: linear-gradient(
+                to bottom,
+                hsl(252, 100%, 67%),
+                hsl(241, 81%, 54%)
+            );
+            --gradient-circle: linear-gradient(
+                to bottom,
+                hsla(256, 72%, 46%, 1),
+                hsla(241, 72%, 46%, 0)
+            );
+
+            /* Font Families */
+            --ff-primary: 'Hanken Grotesk', sans-serif;
+
+            /* Font Weights */
+            --fw-regular: 500;
+            --fw-bold: 700;
+            --fw-extra-bold: 800;
+        }
+
+        /* ------------------- */
+        /* Reset               */
+        /* ------------------- */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body,
+        h1,
+        h2,
+        p {
+            margin: 0;
+        }
+
+        /* ------------------- */
+        /* General Styling     */
+        /* ------------------- */
+        body {
+            font-family: var(--ff-primary);
+            font-size: 18px;
+            font-weight: var(--fw-regular);
+            line-height: 1.5;
+            color: var(--clr-neutral-dark-gray-blue);
+            background-color: var(--clr-neutral-pale-blue);
+
+            /* Center the component */
+            display: grid;
+            place-content: center;
+            min-height: 100vh;
+            margin: 1rem;
+        }
+
+        /* ------------------- */
+        /* Component Styling   */
+        /* ------------------- */
+        .results-summary {
+            --border-radius: 2rem;
+            --padding: 2.5rem;
+            
+            display: grid;
+            max-width: 46rem;
+            background-color: var(--clr-neutral-white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 1.5rem 3rem -1.5rem hsla(224, 30%, 27%, 0.15);
+        }
+
+        /* Result Panel (Left/Top) */
+        .results-panel {
+            background: var(--gradient-background);
+            color: hsla(0, 0%, 100%, 0.8);
+            text-align: center;
+            padding: var(--padding);
+            border-radius: var(--border-radius);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .results-panel__title {
+            font-size: 1.25rem;
+            font-weight: var(--fw-bold);
+            color: var(--clr-neutral-light-lavender);
+        }
+
+        .results-panel__score {
+            width: 12.5rem;
+            height: 12.5rem;
+            border-radius: 50%;
+            background: var(--gradient-circle);
+            display: grid;
+            place-content: center;
+        }
+
+        .results-panel__score span {
+            display: block;
+            font-size: 4.5rem;
+            font-weight: var(--fw-extra-bold);
+            color: var(--clr-neutral-white);
+            line-height: 1;
+        }
+
+        .results-panel__rank {
+            font-size: 2rem;
+            font-weight: var(--fw-bold);
+            color: var(--clr-neutral-white);
+            margin-bottom: -0.5rem;
+        }
+        
+        .results-panel__description {
+            max-width: 26ch;
+        }
+
+        /* Summary Panel (Right/Bottom) */
+        .summary-panel {
+            padding: var(--padding);
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .summary-panel__title {
+            font-size: 1.5rem;
+            font-weight: var(--fw-bold);
+        }
+
+        .summary-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 0.75rem;
+        }
+        
+        .summary-item__category {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: var(--fw-bold);
+        }
+
+        /* Individual item colors */
+        .summary-item--reaction {
+            background-color: hsla(0, 100%, 67%, 0.1);
+            color: var(--clr-primary-light-red);
+        }
+        .summary-item--memory {
+            background-color: hsla(39, 100%, 56%, 0.1);
+            color: var(--clr-primary-orangey-yellow);
+        }
+        .summary-item--verbal {
+            background-color: hsla(166, 100%, 37%, 0.1);
+            color: var(--clr-primary-green-teal);
+        }
+        .summary-item--visual {
+            background-color: hsla(234, 85%, 45%, 0.1);
+            color: var(--clr-primary-cobalt-blue);
+        }
+
+        .summary-item__score {
+            color: var(--clr-neutral-dark-gray-blue);
+            font-weight: var(--fw-bold);
+        }
+
+        .summary-item__score span {
+            opacity: 0.6;
+        }
+
+        .button {
+            background: var(--clr-neutral-dark-gray-blue);
+            color: var(--clr-neutral-white);
+            font-family: inherit;
+            font-size: 1.125rem;
+            font-weight: var(--fw-bold);
+            border: 0;
+            border-radius: 100vw;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .button a {
+            color: var(--clr-neutral-white);
+            text-decoration: none;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            background: var(--gradient-background);
+        }
+
+        /* ------------------- */
+        /* Responsive Design   */
+        /* ------------------- */
+        @media (min-width: 600px) {
+            .results-summary {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+    </style>
+  </head>
+  <body>
+    <!-- results-summary container -->
+    <div class="results-summary">
+      <!--Result panel  -->
+      <div class="results-panel">
+        <h1 class="results-panel__title">Your Result</h1>
+        <div class="results-panel__score"><span>60</span> of 100</div>
+        <p class="results-panel__rank">Great</p>
+        <p class="results-panel__desc">
+          You scored higher than 65% of the people who have taken these tests.
+        </p>
+      </div>
+      <!-- Summary Panel -->
+      <div class="summary-panel">
+        <h2 class="summary-panel__title">Summary</h2>
+        <ul class="summary-list">
+          <li class="summary-item summary-item--reaction">
+            <div class="summary-item__category">
+              <img src="/practice/assets/images/icon-reaction.svg" alt="" />
+              Reaction
+            </div>
+            <p class="summary-item__score">80 <span>/ 100</span></p>
+          </li>
+          <li class="summary-item summary-item--memory">
+            <div class="summary-item__category">
+              <img src="/practice/assets/images/icon-memory.svg" alt="" />
+              Memory
+            </div>
+            <p class="summary-item__score">69 <span>/ 100</span></p>
+          </li>
+          <li class="summary-item summary-item--verbal">
+            <div class="summary-item__category">
+              <img src="/practice/assets/images/icon-verbal.svg" alt="" />
+              Verbal
+            </div>
+            <p class="summary-item__score">52 <span>/ 100</span></p>
+          </li>
+          <li class="summary-item summary-item--visual">
+            <div class="summary-item__category">
+              <img src="/practice/assets/images/icon-visual.svg" alt="" />
+              Visual
+            </div>
+            <p class="summary-item__score">71 <span>/ 100</span></p>
+          </li>
+        </ul>
+        <button class="button">
+          <a
+            href="https://youtu.be/xvFZjo5PgG0?si=FSzwvN8O7XS_n1DJ"
+            target="_blank"
+            >Continue</a
+          >
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
